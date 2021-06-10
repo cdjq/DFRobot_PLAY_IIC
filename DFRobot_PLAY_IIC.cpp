@@ -457,8 +457,12 @@ DFRobot_PLAY_IIC::sPacket_t DFRobot_PLAY_IIC::pack(String cmd ,String para){
   return pack;
 }
 void DFRobot_PLAY_IIC::writeATCommand(String command,uint8_t length){
-  uint8_t data[40];
-
+  _pWire->requestFrom(_deviceAddr, 36);
+  for(uint16_t i = 0; i < 36; i++) {
+    _pWire->read();
+    //DBG(data[i]);
+  }
+  delay(10);
   _pWire->beginTransmission(_deviceAddr);
   for(uint8_t i=0;i<length;i++){
     _pWire->write(command[i]);
@@ -472,11 +476,10 @@ String DFRobot_PLAY_IIC::readAck(uint8_t len){
 
   String str="";
   size_t offset = 0,left = len;
-  long long curr = millis();
   uint8_t data[80] = {0};
   delay(100);
   if(len == 0){
-    read(data,80);
+    read(data,36);
       for(uint8_t i = 0;i<80;i++){
       str += (char)data[i];
       offset++;
@@ -492,7 +495,7 @@ String DFRobot_PLAY_IIC::readAck(uint8_t len){
         }
   str[len]=0;
   }
-  Serial.println(str);
+  //Serial.println(str);
   return str;
 }
 uint8_t DFRobot_PLAY_IIC::read(uint8_t *data,uint8_t len){
