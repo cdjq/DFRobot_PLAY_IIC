@@ -457,13 +457,16 @@ DFRobot_PLAY_IIC::sPacket_t DFRobot_PLAY_IIC::pack(String cmd ,String para){
   return pack;
 }
 void DFRobot_PLAY_IIC::writeATCommand(String command,uint8_t length){
+	
   _pWire->requestFrom(_deviceAddr, 36);
   for(uint16_t i = 0; i < 36; i++) {
     _pWire->read();
     //DBG(data[i]);
   }
+  
   delay(10);
   _pWire->beginTransmission(_deviceAddr);
+  
   for(uint8_t i=0;i<length;i++){
     _pWire->write(command[i]);
   }
@@ -476,20 +479,29 @@ String DFRobot_PLAY_IIC::readAck(uint8_t len){
 
   String str="";
   size_t offset = 0,left = len;
-  uint8_t data[80] = {0};
-  delay(100);
+  uint8_t data[100] = {0};
+ delay(100);
   if(len == 0){
-    read(data,36);
-      for(uint8_t i = 0;i<80;i++){
-      str += (char)data[i];
-      offset++;
-      if((str[offset - 1]) == '\n' && (str[offset - 2] == '\r')) break;
-      }
+      for(uint8_t j = 0;j<3;j++){
+      read(data,36);
+        for(uint8_t i = 0;i<36;i++){
+        if(data[i] != 255)
+        str += (char)data[i];
+        offset++;
+        if((str[offset - 1]) == '\n' && (str[offset - 2] == '\r')) {
+        j = 3;
+        break;
+		
+		}
+        }
+        
+	  }
   } else {
       read(data,len);
         for(uint8_t i = 0;i<len;i++){
-
+          
           str += (char)data[i];
+		  
 		  offset++;
 		  if((str[offset - 1]) == '\n' && (str[offset - 2] == '\r')) break;
         }
@@ -505,6 +517,7 @@ uint8_t DFRobot_PLAY_IIC::read(uint8_t *data,uint8_t len){
     data[i] = _pWire->read();
     DBG(data[i]);
   }
+  return 0;
 }
 
 
