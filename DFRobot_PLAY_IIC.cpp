@@ -21,6 +21,12 @@ DFRobot_PLAY_IIC::DFRobot_PLAY_IIC(TwoWire *pWire, uint8_t address){
 bool DFRobot_PLAY_IIC::begin(){
    sPacket_t cmd;
    _pWire->begin();
+#if defined(ESP8266)
+  // _pWire->beginTransmission(_deviceAddr);
+    // _pWire->write(0xaa);
+  // _pWire->endTransmission();
+  // delay(500);
+#endif
    cmd = pack();
    
    writeATCommand(cmd.str,cmd.length);
@@ -458,8 +464,8 @@ DFRobot_PLAY_IIC::sPacket_t DFRobot_PLAY_IIC::pack(String cmd ,String para){
 }
 void DFRobot_PLAY_IIC::writeATCommand(String command,uint8_t length){
 	
-  _pWire->requestFrom(_deviceAddr, 36);
-  for(uint16_t i = 0; i < 36; i++) {
+  _pWire->requestFrom(_deviceAddr, 4);
+  for(uint16_t i = 0; i < 4; i++) {
     _pWire->read();
     //DBG(data[i]);
   }
@@ -484,6 +490,7 @@ String DFRobot_PLAY_IIC::readAck(uint8_t len){
   if(len == 0){
       for(uint8_t j = 0;j<3;j++){
       read(data,36);
+      delay(10);
         for(uint8_t i = 0;i<36;i++){
         if(data[i] != 255)
         str += (char)data[i];
@@ -511,7 +518,7 @@ String DFRobot_PLAY_IIC::readAck(uint8_t len){
   return str;
 }
 uint8_t DFRobot_PLAY_IIC::read(uint8_t *data,uint8_t len){
-   delay(10);
+
   _pWire->requestFrom(_deviceAddr, (uint8_t) len);
   for(uint16_t i = 0; i < len; i++) {
     data[i] = _pWire->read();

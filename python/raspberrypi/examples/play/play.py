@@ -83,6 +83,6 @@ print("The total length of the currently-playing song:%d"%DF1201S.get_total_time
 #Get the name of the playing file 
 print("The name of the currently-playing file: %s"%DF1201S.get_file_name())
 #Play the file No.1, the numbers are arranged according to the sequence of the files copied into the U-disk 
-DF1201S.play_file_num(num = 1)
+#DF1201S.play_file_num(num = 1)
 #Play the test.mp3 file in test folder 
 #DF1201S.play_spec_file("/test/test.mp3")

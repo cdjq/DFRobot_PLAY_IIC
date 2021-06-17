@@ -32,6 +32,8 @@ class DFRobot_PLAY_IIC(object):
 
   def begin(self ):
     string,length= self.pack()
+    #self.i2cbus.write_byte(self._addr,0xaa)
+    time.sleep(0.5)
     self.write_AT_command(string,length)
     if self.read_ack(4) == 'OK\r\n':
       return True
@@ -179,6 +181,7 @@ class DFRobot_PLAY_IIC(object):
      return False
    string,length = self.pack("PLAYFILE",str(num))
    self.write_AT_command(string,length)
+   print(string)
    if self.read_ack(4) == "OK\r\n":
     return True
    else:
@@ -312,7 +315,7 @@ class DFRobot_PLAY_IIC(object):
     #for i in range(0,len1):
       #list1[i] = ord(list1[i])
     #self.i2cbus.write_i2c_block_data(self._addr,0,list1)
-    self.read(108)
+    self.read(24)
     time.sleep(0.1)
     for i in range(0,len1):
       self.i2cbus.write_byte(self._addr ,ord(data[i]))
