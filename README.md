@@ -5,6 +5,9 @@ Here comes the DFPlayer Pro-a mini simple but powerful MP3 Player! This MP3 play
 
 ![Product Image](./resources/images/SEN0245svg1.png)
 
+## Product Link (Link to DFRobot store)
+    SKU: XXXX
+	
 ## Table of Contents
 
 * [Summary](#summary)

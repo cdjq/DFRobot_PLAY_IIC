@@ -8,6 +8,11 @@ arduino、AT指令、板载按键和AD按键四种控制方式。 <br>
 
 ![Product Image](./resources/images/SEN0245svg1.png)
 
+
+## 产品链接（链接到中文商城）
+
+    SKU：产品名称
+	
 ## Table of Contents
 
 * [Summary](#summary)

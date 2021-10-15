@@ -2,7 +2,7 @@
  @file DFRobot_PLAY_IIC.py
  @brief Define the basic structure of class DFRobot_PLAY_IIC, the implementation of the basic methods
  @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
- @licence     The MIT License (MIT)
+ @license     The MIT license (MIT)
  @author [fengli](li.feng@dfrobot.com)
  @version  V1.1
  @date  2021-10-15

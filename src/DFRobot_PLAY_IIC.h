@@ -3,7 +3,7 @@
  *@brief Define the basic structure of class DFRobot_PLAY, the implementation of basic methods.
  *@details This module is a conversion board, which can drive DF1201S DFPlayer PRO MP3 through I2C
  *@copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
- *@license     The MIT License (MIT)
+ *@license     The MIT license (MIT)
  *@author [fengli](li.feng@dfrobot.com)
  *@version  V1.1
  *@date  2021-10-15

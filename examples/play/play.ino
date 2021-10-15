@@ -3,7 +3,7 @@
  *@brief Music Playing Example Program
  *@details  Experimental phenomenon: control MP3 play music, obtain song information
  *@copyright  Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
- *@licence     The MIT License (MIT)
+ *@license     The MIT license (MIT)
  *@author [fengli](li.feng@dfrobot.com)
  *@version  V1.1
  *@date  2021-10-15
