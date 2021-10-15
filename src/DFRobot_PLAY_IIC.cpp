@@ -4,9 +4,8 @@
  *@copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  *@licence     The MIT License (MIT)
  *@author [fengli](li.feng@dfrobot.com)
- *@version  V1.0
- *@date  2020-12-02
- *@get from https://www.dfrobot.com
+ *@version  V1.1
+ *@date  2021-10-15
  *@https://github.com/DFRobot/DFRobot_PLAY_IIC
 */
 
